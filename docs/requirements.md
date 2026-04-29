@@ -212,16 +212,6 @@ The data in a Hyphae vault is sensitive: real names of people in the user's life
 
 ## 6. What Hyphae doesn't do
 
-What Hyphae is not, stated explicitly:
-
-- Not a productivity dashboard - no streaks, no totals, no performance metrics.
-- Not a social network - no feed, no likes, no follower counts.
-- Not a therapy tool - direct and supportive, not clinical or prescriptive.
-- Not a gamification app - no points, no badges, no completion percentages on relationships.
-- Not a data-heavy analytics tool - no more than two relationship states per person in any summary view.
-
-What it doesn't include in v1:
-
 - **Mobile-first experience.** The design target is a desktop session (Obsidian + a coding agent that can read and write the vault). On mobile, Obsidian works as a reader and editor against the same vault, so the user can browse their people, read past contacts, edit notes, and add planned events directly. What mobile doesn't have today is the agent itself - mobile chat clients can't write files, so add-person, log-contact, and check-in flows happen at the desktop. Once mobile clients gain file-tool access (or a Hyphae-specific mobile app lands), this gap closes.
 - **Multi-user vaults.** One user per vault.
 - **Sync across devices.** The user handles sync themselves through whatever tool they prefer (Obsidian Sync, iCloud, Syncthing).
