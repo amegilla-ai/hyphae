@@ -1,169 +1,170 @@
 # Theoretical Foundations
-## Connections App — Research Basis
+## Hyphae - Research Basis
 
 ---
 
-## Why This Matters: The Health Case for Social Connection
+## The health context for social connection
 
-The stakes for getting social connection right are high. Research across 70 longitudinal studies finds that the risk associated with social isolation and loneliness is comparable to smoking and obesity as a mortality risk factor. Loneliness has medium-to-large effects across all health outcomes reviewed, with the strongest effects on mental health and overall wellbeing (depression, anxiety, suicidality, quality of life). Friend support specifically has been shown to play a greater role in reducing loneliness than family or partner support (effect size r = −0.48 vs r = −0.34 for family).
+A meta-analysis across 70 longitudinal studies (Holt-Lunstad et al., 2015) found that social isolation and loneliness are associated with increased mortality risk at a magnitude comparable to smoking and obesity. Loneliness shows medium-to-large effect sizes across mental health outcomes including depression, anxiety, suicidality, and self-reported wellbeing. A separate meta-analysis (Zhang & Dong, 2022; N=113,427) found friend support has a stronger negative correlation with loneliness (r = -0.48) than family support (r = -0.34).
 
-For neurodiverse people, these risks are compounded. Over 50% of adults with autism experience severe social isolation. Research estimates that 50–60% of children with ADHD have difficulty with peer relationships, and longitudinal studies show these difficulties persist into adulthood.
+In neurodiverse populations, social isolation is more prevalent. Studies of autistic adults report that over 50% experience severe social isolation. Studies of children with ADHD report that 50-60% have difficulty with peer relationships, and longitudinal research shows these difficulties often continue into adulthood.
 
-**The app's core premise is therefore a public health intervention, not just a productivity tool.**
+Hyphae is a personal tool, not a clinical intervention. The research above is the context that motivates the design, not a claim about what the app delivers.
 
 ---
 
-## Theoretical Framework 1: Dunbar's Social Brain Hypothesis
+## Framework 1: Dunbar's Social Brain Hypothesis
 
-### The Science
+### The hypothesis
 
-Robin Dunbar's Social Brain Hypothesis (1992) proposes that primate brains — including human brains — evolved to manage the cognitive demands of complex social relationships. The size of the neocortex correlates with the size and complexity of social networks a species can maintain.
+Robin Dunbar's Social Brain Hypothesis (1992) proposes that primate brains, including human brains, evolved to manage the cognitive demands of complex social relationships. The hypothesis links neocortex size to the size and complexity of social networks a species can maintain.
 
-For humans, this predicts a natural social group size of approximately 150 (Dunbar's Number), confirmed across 23 studies of personal social networks and ethnographic communities, spanning cultures and historical periods over 2,000 years (median sample N = 5,457; largest N = 61 million).
+For humans, the hypothesis predicts a typical social group size of around 150 (Dunbar's Number). This figure has been studied across 23 datasets of personal networks and ethnographic communities (median sample N = 5,457; largest N = 61 million). The number is contested in the literature; it should be read as a population-level pattern with wide individual variation, not a hard cognitive ceiling.
 
-### The Layered Structure
+### The layered structure
 
-Dunbar's research reveals that human social networks are not flat — they are arranged in a fractal, layered structure with specific group sizes. Each layer has a distinct *function*, not only a size and cadence:
+Dunbar's research describes human social networks as arranged in a layered structure, with each layer holding more people but receiving less individual time and emotional investment. Each layer is associated with a distinct function, a typical size, and a typical contact frequency:
 
 | Size (cumulative) | Function | Cadence (at least) |
 |---|---|---|
-| 5 | **Support clique** — the people willing to provide unstinting emotional, physical, and financial help. Satisfies intimacy needs. | Weekly |
-| 15 | **Sympathy group** — everyday social companions, people you invite to dinner or an evening out. Satisfies socialising needs. | Monthly |
-| 50 | **Shared-context or party friends** — people you encounter through repeating contexts (hobby groups, online communities, work adjacencies, neighbourhood regulars) or people you'd invite to a BBQ or birthday party. Contact is anchored in the context or the event, not in private one-to-one time. | Every 6 months |
-| 150 | **Wider network** — people who are still friends (you'd show up if something significant happened, you'd invite them to a wedding or funeral) but see rarely. Extended family, previous colleagues and classmates, long-standing friends you don't see often, online friends. Contact at least once a year keeps the tie alive. | Yearly |
+| 5 | **Support clique** - the people willing to provide unstinting emotional, physical, and financial help. Satisfies intimacy needs. | Weekly |
+| 15 | **Sympathy group** - everyday social companions, people you invite to dinner or an evening out. Satisfies socialising needs. | Monthly |
+| 50 | **Shared-context or party friends** - people you encounter through repeating contexts (hobby groups, online communities, work adjacencies, neighbourhood regulars) or people you'd invite to a BBQ or birthday party. Contact is anchored in the context or the event, not in private one-to-one time. | Every 6 months |
+| 150 | **Wider network** - people who are still friends (you'd show up if something significant happened, you'd invite them to a wedding or funeral) but see rarely. Extended family, previous colleagues and classmates, long-standing friends you don't see often, online friends. Contact at least once a year keeps the tie alive. | Yearly |
 
-Most people have **one or two very close friends** within the support clique — typically a partner, and sometimes a best friend of the same gender. Hyphae splits these innermost two out as a distinct inner tier (layer 1 in the app's five-layer mapping) because the function is qualitatively different — daily presence and emotional backbone, not a clique of five.
+Most people have one or two very close friends within the support clique, typically including a partner. Hyphae splits these innermost one or two out as a distinct inner tier (layer 1 in Hyphae's five-layer mapping) because the function differs from a five-person support clique: daily contact rather than weekly, and a different role in everyday life.
 
-The cadences above are **floors**: at-least-this-often thresholds below which the research says drift is objectively concerning. They are not targets.
+The cadences in the table are floors, not targets. The research suggests these are at-least-this-often thresholds below which relationships are at risk of decline.
 
 ### Time allocation
 
-Dunbar found that we devote our available social time in a steeply weighted way:
+Dunbar found that available social time tends to be unevenly distributed across the layers, with roughly:
 
-- ~40% to the innermost 5
-- ~20% to the next 10 (the additional people reaching to 15)
-- ~40% to the remaining ~135 between 15 and 150
+- 40% to the innermost 5
+- 20% to the next 10 (reaching to 15)
+- 40% to the remaining ~135 (between 15 and 150)
 
-The layers are defined not just by size, but by the investment of time and emotional energy required to maintain them.
+The layers are characterised by the time and emotional investment they typically receive, not only their size.
 
-### Social fingerprint
+### Variation across individuals
 
-Contact rhythm is user-specific. Two people can both be in someone's close layer with one contacted ten times a month and the other twice — both are healthy if that's the user's normal pattern with each person. The floors above are population-level research thresholds; each user's actual rhythm with each individual is their own **social fingerprint**.
+Contact rhythm varies between people. Two people in the same layer can be contacted at quite different frequencies and both relationships can be healthy, if those frequencies match the user's normal pattern with each person. Hyphae uses the floors in the table as population-level reference points; each user's typical rhythm with a specific person is treated as that person's normal.
 
-There are also two stable whole-network patterns: most people have a few very close friendships and many weak ones; a smaller group have more close friendships and fewer weak ones. Both patterns are healthy; neither is the "right" shape.
+Two whole-network patterns also recur in the research: many people have a small number of very close friendships and many weaker ties; a smaller proportion have more close friendships and fewer weak ties. Both are stable patterns; neither is privileged.
 
-### Energy Allocation
+A 2025 study (PMC, N=906) reported significant individual variation in self-perceived energy allocation across the layers, and an association between self-esteem and energy allocation to the middle (Layer 2) network. The implication for Hyphae is that the layer framework should be used flexibly rather than as a prescription.
 
-A 2025 study (PMC, N=906) confirmed significant individual variation in how people perceive their energy allocation across these layers. This matters for the app: the framework must be flexible rather than prescriptive, reflecting that people genuinely differ in how they distribute social effort. Self-esteem was associated with greater energy allocation to the middle (Layer 2) network, suggesting that inner confidence affects how people invest socially.
+### Caveats
 
-### Caveats and Limitations
-
-Dunbar's number is an average with wide confidence intervals, not a hard cognitive ceiling. Critics note that cultural mechanisms and individual variation mean the numbers should be treated as rough guides rather than fixed rules. The app uses the layered framework as an organising structure, not as a diagnostic tool.
+Dunbar's number is a population average with wide confidence intervals, not a hard cognitive ceiling. Cultural mechanisms and individual variation mean the numbers should be treated as rough guides. Hyphae uses the layered framework as an organising structure, not as a diagnostic.
 
 ---
 
-## Theoretical Framework 2: How Neurodiversity Affects Relationship Maintenance
+## Framework 2: How neurodiversity affects relationship maintenance
 
-This app is designed for anyone whose neurology makes social relationship maintenance harder than average. This includes — but is not limited to — ADHD, autism spectrum conditions, dyslexia, dyspraxia/DCD, dyscalculia, and combinations thereof. These conditions frequently co-occur: research confirms shared genetic influences and overlapping cognitive profiles across ADHD, dyslexia, and dyscalculia. The social relationship challenges, while they manifest differently, share important common patterns.
+Hyphae is designed for people whose neurology makes social relationship maintenance harder than average. This includes ADHD, autism spectrum conditions, dyslexia, dyspraxia/DCD, dyscalculia, and combinations of these. The conditions frequently co-occur, with research showing shared genetic influences and overlapping cognitive profiles across ADHD, dyslexia, and dyscalculia. The relationship-maintenance challenges manifest differently across conditions but share recurring patterns.
 
-### ADHD: The Executive Function Gap
+### ADHD and executive function
 
-ADHD has been reconceptualised as primarily an impairment of executive functions — the brain processes that regulate organisation, time management, prioritisation, and decision-making (Barkley, 1997). CHADD's research finds that social deficits in ADHD are **not primarily a lack of social skills** but rather **a failure to reliably deploy skills that have already been acquired**.
+ADHD has been reconceptualised since Barkley (1997) as primarily an impairment of executive functions: the brain processes regulating organisation, time management, prioritisation, and decision-making. CHADD's review finds that social difficulties in ADHD are typically not a lack of social skills, but a difficulty reliably deploying skills that have already been acquired.
 
-This is foundational for the app's design: users do not need to be taught how to be a good friend. They need external scaffolding to compensate for executive function gaps that prevent consistent follow-through.
+This frames Hyphae's approach: users do not need to be taught how to be a good friend; they need external scaffolding to compensate for executive function gaps that affect consistent follow-through.
 
-Key ADHD-specific barriers to relationship maintenance:
-- **Working memory failures** — forgetting to reply, missing scheduled contact, losing track of what was shared in previous conversations
-- **Time blindness** — poor sense of how much time has elapsed; a relationship can feel recent when months have passed
-- **Out of sight, out of mind** — without active reminders, people are functionally absent from awareness
-- **Initiation deficits** — difficulty starting the action of reaching out, even when the desire is present
-- **Inconsistent follow-through** — forgetting plans, appearing disinterested despite genuine care
-- **Emotional dysregulation** — fluctuating between over-intensity and withdrawal
+Recurring ADHD-related barriers to relationship maintenance reported in the literature:
 
-### Autism: Communication Style Differences and Social Anxiety
+- Working memory failures, including forgetting to reply, missing scheduled contact, and losing track of what was shared in previous conversations
+- Time blindness, leading to poor awareness of how much time has elapsed since contact
+- "Out of sight, out of mind" patterns, where people fall out of awareness without active reminders
+- Initiation difficulty, where reaching out is hard even when the desire is present
+- Inconsistent follow-through, including forgetting plans, which can be misread as disinterest
+- Emotional dysregulation, including fluctuation between over-engagement and withdrawal
 
-Autism is characterised by differences in social communication style — not a lack of desire for connection. Research challenging the traditional "social motivation deficit" model finds that autistic people often want and value relationships deeply, but face structural barriers to maintaining them.
+### Autism, communication style, and social anxiety
 
-Key autism-specific barriers:
-- **Social anxiety** — approximately 50% of autistic adults meet criteria for clinically diagnosed social anxiety disorder, with many more experiencing sub-clinical symptoms. The anticipation of negative evaluation creates a significant barrier to initiating contact
-- **Communication style mismatch** — the "double empathy problem" (Milton, 2012) establishes that social difficulties in autism are bidirectional: non-autistic people struggle to understand autistic communication styles just as much as the reverse. This means social interactions often require more effortful processing for autistic people
-- **Social exhaustion/autistic burnout** — masking neurotypical social behaviours is cognitively costly and depleting, reducing available capacity for social interaction
-- **Difficulty reading implicit social norms** — the implicit expectation to maintain contact at certain cadences is often not recognised without it being made explicit
-- **Sensory sensitivities** — certain social environments or communication modes (e.g. phone calls) can be aversive, creating barriers to contact that are not about the relationship itself
-- **Preference for depth over breadth** — autistic people often prefer fewer, deeper relationships; the Dunbar layer model may naturally skew toward smaller inner layers
+Autism is characterised by differences in social communication style rather than absence of desire for connection. Research challenging the older "social motivation deficit" model has found that autistic people often value relationships deeply and face structural barriers to maintaining them rather than motivational ones.
 
-Research (UT Dallas, 2020) confirms that autistic adults rate interactions with other autistic people more favourably, suggesting the challenge is often a neurotype mismatch, not a social deficit.
+Recurring autism-related barriers reported in the literature:
 
-### Dyslexia: Communication and Memory Challenges
+- Social anxiety: roughly 50% of autistic adults meet criteria for diagnosed social anxiety disorder (Maddox & White, 2015), with many more reporting sub-clinical symptoms
+- The double empathy problem (Milton, 2012): communication difficulties between autistic and non-autistic people are bidirectional, with both groups finding cross-neurotype interaction more effortful
+- Social exhaustion and autistic burnout: masking neurotypical behaviours is cognitively costly and depletes available capacity for further interaction
+- Difficulty reading implicit social norms, including unwritten expectations about contact frequency
+- Sensory sensitivities, which can make specific environments or modes of contact (e.g. phone calls) aversive independent of the relationship
+- Preference for depth over breadth, which can mean smaller inner layers in the Dunbar model
 
-Dyslexia primarily affects reading and writing, but its social impact is often underestimated:
-- **Difficulty with written communication** — text messages, emails, and written replies can be effortful, creating friction in the most common modern modes of maintaining contact
-- **Working memory challenges** — difficulty remembering conversational details, sequences of events, or commitments made in previous interactions
-- **Word-finding difficulties** — trouble finding the right words in the moment, leading to avoidance of conversations
-- **Low self-esteem and social withdrawal** — decades of research link dyslexia to anxiety and lower self-esteem, which can cause people to pull back from social situations
-- **Sequencing difficulties** — trouble recalling the order of events or interactions, making conversation recall unreliable
+A 2020 UT Dallas study found autistic adults rated interactions with other autistic adults more favourably than with non-autistic adults, consistent with the double empathy interpretation.
 
-### Dyspraxia/DCD: Physical and Social Coordination
+### Dyslexia: communication and memory
 
-Dyspraxia (Developmental Coordination Disorder) affects motor coordination but has significant social consequences:
-- **Difficulty with group social activities** — sports, physical social contexts that are central to many friendships can be exclusionary
-- **Processing speed** — slower processing of social information can cause delays in responses that are misread as disinterest
-- **Organisational difficulties** — challenges with planning and sequencing extend to social planning and follow-through
+Dyslexia primarily affects reading and writing, but has documented effects on relationship maintenance:
 
-### The Common Thread: External Structure as Compensation
+- Difficulty with written communication makes text messages, emails, and written replies effortful, creating friction in the most common modern modes of maintaining contact
+- Working memory challenges affect recall of conversational details, sequences of events, and commitments
+- Word-finding difficulties can lead to avoidance of conversations
+- Research links dyslexia to higher rates of anxiety and lower self-esteem, which can contribute to social withdrawal
+- Sequencing difficulties affect recall of the order of events or interactions
 
-Across all these conditions, the research points to the same compensatory mechanism: **external structure**. CHADD's guidance for ADHD is "schedule it." The same principle applies across the neurodiversity spectrum — explicit, structured reminders and systems substitute for the internal automatic social tracking that neurotypical people perform intuitively.
+### Dyspraxia/DCD: motor coordination and pace
 
-The app operationalises this: it externalises the social maintenance system that neurodiverse users cannot rely on internally.
+Dyspraxia (Developmental Coordination Disorder) affects motor coordination, with documented social effects:
+
+- Group activities that involve sport or physical coordination can be exclusionary
+- Slower processing of social information can cause response delays that are misread as disinterest
+- Organisational difficulty extends to social planning and follow-through
+
+### The common pattern: external structure
+
+Across these conditions, the research points to the same compensatory mechanism: external structure. CHADD's general guidance for ADHD is "schedule it"; analogous patterns are recommended across the wider neurodiversity literature. Explicit, structured reminders and systems substitute for the internal automatic social tracking that some neurotypical brains perform without effort.
+
+This is what Hyphae does: it provides external structure for the parts of relationship maintenance that aren't reliable when handled internally.
 
 ---
 
-## Theoretical Framework 3: The Neurodiversity-Affirmative Approach
+## Framework 3: Neurodiversity-affirmative framing
 
-### Framing Matters
+Hyphae avoids a deficit or pathology framing. Consistent with the neurodiversity movement and the framework set out in Baron-Cohen (2017), neurodiverse traits are treated as natural variation rather than as disorders to be corrected. The relationship-maintenance challenge is framed as a mismatch between how a particular brain works and the implicit expectations of neurotypical social culture, not as a fault in the person.
 
-The app explicitly avoids a deficit or pathology framing. Consistent with the neurodiversity movement and Baron-Cohen's (2017) framework, neurodiverse traits are natural variations — not disorders to be fixed. The challenge is not the person; it is the mismatch between how their brain works and the implicit social maintenance expectations of neurotypical culture.
+This framing has direct design consequences in Hyphae:
 
-This framing shapes every design decision:
 - Non-judgmental language throughout
-- No "failure" states — only opportunities
+- No failure states; relationship status is described factually rather than evaluatively
 - Progress is defined by the user's own goals, not external norms
-- The app is a prosthetic tool, not a corrective one
+- The system supports the user without trying to change them
 
-### Masking and Authenticity
+### Masking
 
-Research shows that neurodiverse people are often required to "mask" — to perform neurotypical social behaviours at significant psychological cost. The app should never add to this burden. Features should reduce cognitive load, not increase it.
-
----
-
-## Theoretical Framework 4: Friendship Quality Over Quantity
-
-### The Threshold Effect
-
-Research on friendship and wellbeing reveals a threshold phenomenon: the mental health benefits of friendship plateau quickly. A Cambridge study found that loneliness decreases until approximately four close friends, depression risk until two, and stress until two. Beyond these thresholds, more friends add little incremental benefit.
-
-**Implication for the app**: The goal is not to maximise social contact but to maintain meaningful connections at appropriate cadences. Quality and intentionality matter more than volume.
-
-### Friend Support vs. Family Support
-
-Meta-analysis (N=113,427 across 177 articles) confirms that friend support has a stronger negative correlation with loneliness (r = −0.48) than family support (r = −0.34). This reinforces that chosen, maintained friendships — the kind the app supports — are particularly protective.
+Research documents that neurodiverse people often mask - that is, perform neurotypical social behaviours - at psychological cost. Hyphae aims not to add to that load: features are intended to reduce the cognitive cost of relationship maintenance, not increase it.
 
 ---
 
-## Design Principles Derived from Research
+## Framework 4: Quality matters more than quantity
 
-| Research Finding | App Design Principle |
-|------------------|----------------------|
-| Executive function deficits, not skill deficits | External scaffolding, not social skills coaching |
-| Out of sight, out of mind | Active nudges based on elapsed time |
-| Routine is the primary compensatory strategy | Structured cadence per Dunbar layer |
-| Energy is finite and variable | Capacity settings; dynamic adjustment |
-| Quality over quantity | Goal-setting per relationship, not contact maximisation |
-| Masking is harmful | Low-friction, non-judgmental UX throughout |
-| Neurodiversity-affirmative framing | No failure states; progress defined by user |
-| Friendship quality predicts wellbeing | Relationship quality tracking as a core feature |
-| Layered social networks are universal | Dunbar's 5 layers as the organising structure |
-| Individual variation in energy allocation | Flexible capacity and goals, not fixed prescriptions |
+### The threshold effect
+
+Research on friendship and wellbeing finds a threshold pattern: mental health benefits from friendship plateau at relatively small numbers. A Cambridge study reported that loneliness decreased up to around four close friends, depression risk up to two, and stress up to two. Beyond those points, additional friends added little incremental benefit.
+
+The implication for Hyphae: the design goal is not to maximise contact but to support maintaining a small number of meaningful relationships at sustainable cadences.
+
+### Friend support vs. family support
+
+Meta-analysis across 177 articles (N=113,427; Zhang & Dong, 2022) found friend support has a stronger negative correlation with loneliness (r = -0.48) than family support (r = -0.34). The kind of relationship Hyphae helps maintain - chosen, ongoing friendships - is the kind associated with the larger protective effect.
+
+---
+
+## How research findings map to Hyphae's design
+
+| Research finding | Design choice in Hyphae |
+|---|---|
+| Social difficulties in ADHD are typically execution-related, not skill-related | External structure, not social skills coaching |
+| Without active reminders, people fall out of awareness | The agent surfaces who hasn't been contacted recently |
+| Structured routine is a primary compensatory strategy | Layer-specific cadence floors as reference points |
+| Social energy varies | Capacity field on check-ins; nudges scale with stated capacity |
+| Wellbeing benefits plateau at a small number of close friends | Per-relationship goals, no contact-volume targets |
+| Masking is psychologically costly | Low-friction interaction; no requirement to perform |
+| Deficit framing is unhelpful | No failure states; progress defined by the user's own goals |
+| Friendship quality is associated with wellbeing | Optional quality recording on contacts |
+| Social networks are layered | Five-layer structure based on Dunbar's research |
+| Energy allocation varies between individuals | Flexible defaults; no prescribed allocation |
 
 ---
 
