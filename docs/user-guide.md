@@ -1,6 +1,6 @@
 # Welcome to Hyphae
 
-You've installed Hyphae and opened your vault. This page walks you through how it works. Once you've read it, your usual landing page is [[home]] - state of your network, what needs you, what to do next.
+You've installed Hyphae and opened your vault in Obsidian. This page is a walkthrough of how Hyphae works. Read it once, then `home.md` (in `overview/`) becomes your starting point - it shows who needs attention, what's planned, and what to do next.
 
 ## What Hyphae is
 
@@ -36,18 +36,13 @@ These aren't magic strings - the agent reads its process specs and figures out w
 
 ## What a check-in does
 
-A check-in is the main move you'll make with Hyphae. It walks through:
-
-1. The agent picks people who need attention (off-track goals, lapsed contact, things you've flagged).
-2. For each, it tells you where things stand and asks what you want to do - log something, plan a contact, change the goal, leave it.
-3. You answer in plain language. The agent writes to the vault as you go.
-4. At the end, you get a summary and a list of things you've committed to do.
+The check-in is what Hyphae is designed around, but you can use Hyphae however suits you. In a check-in, the agent picks out a small set of people who need attention - off-track goals, lapsed contact, anyone you've flagged - and walks through them with you one at a time. For each person, it tells you where things stand and asks what you want to do (log something, plan a contact, change the goal, or leave it). You answer in plain language; the agent writes to the vault as you go. At the end, you get a summary and a list of things you've committed to do.
 
 Stop at any time. Cover as many or as few people as you want, or name specific people for the agent to focus on. There's no "right" length.
 
 ## How to use it
 
-Two main moves: log contacts when they happen, and run a check-in once a week.
+Two things to do regularly: log contacts when they happen, and run a check-in once a week.
 
 ### Logging contacts
 
@@ -65,26 +60,25 @@ Once a week is the right cadence for most people. Daily is too often; you'll mos
 
 ### Actions, not vague intentions
 
-When you plan a contact, the agent asks what needs to happen first. "Call Sam" is vague. "Text Sam tonight to suggest Saturday" is something you can do or not do. The action field is where the executive-function gap closes - the smaller and more specific the next step, the more likely it gets done.
+When you plan a contact, the agent asks what needs to happen first. "Call Sam" is vague. "Text Sam tonight to suggest Saturday" is something you can do or not do. The action field is what makes the difference between "I'll call Sam sometime" and actually doing it. The smaller and more specific the next step, the more likely it gets done.
 
 ### Goals
 
-Most people in your vault won't have a goal set. That's correct. A goal is a hint to the agent that you have an active intent with this person right now - to deepen with Sam, to reconnect with Priya, to repair something with Alex. Set one when you mean it. Clear it when you don't.
+Most people in your vault won't have a goal set, and that's how it should be. A goal is a way of telling the agent you have an active intent with this person right now - to deepen with Sam, reconnect with Priya, repair something with Alex. Set one when you actually mean it, and clear it when you don't.
 
-If the agent flags someone as needs-attention week after week and you keep saying "leave it," the goal is probably wrong. Change it or remove it. Goals you carry without intent are just guilt.
+If the agent flags someone as needs-attention week after week and you keep saying "leave it," the goal is probably wrong - change it or remove it.
 
 ### Telling the agent things
 
-Anything you'd want the agent to remember about a person, just say. "Sam's mum has been ill." "Priya started a new job last month." The agent writes to the person's `## Notes` section. Next time you check in or ask about that person, the agent has the context.
+Anything you'd want the agent to remember about a person, just say so - "Sam's mum has been ill", or "Priya started a new job last month". The agent writes to the person's `## Notes` section, and next time you check in or ask about that person, the agent has the context.
 
-Working memory loses things. The vault doesn't.
+### Notes on use
 
-### Practical things
+Talk to the agent in plain language. There is no required phrasing or syntax.
 
-- Use plain language. Don't try to sound like a database.
-- Push back when the agent's read is wrong. "Actually we've been texting, I just haven't logged it" should change what gets written. If it doesn't, that's a bug.
-- Trust the data more than your gut about who you've seen lately. Time blindness is real; the agent doesn't have it.
-- The minimum is: log when things happen, check in once a week. Goals, quality fields, and actions are all optional. Add them when they help.
+If the agent describes a relationship in a way that does not match how things are, correct it. Saying "we've been texting, I just haven't logged it" should change what the agent writes. If it does not, that is a bug.
+
+The minimum required to use Hyphae is logging contacts when they happen and running a check-in once a week; goals, quality fields, and the action field on planned contacts are optional and only worth using when they help.
 
 ### When something isn't working
 
@@ -92,7 +86,7 @@ If the agent flags people you're fine with, or skips people you want to think ab
 
 ## Layers
 
-Every person in your vault sits in one of five layers, modelled on Dunbar's circles:
+Every person in your vault sits in one of five layers, based on how close the relationship is. The structure is borrowed from research by anthropologist Robin Dunbar - see `background.md` in the vault root for why these layers, why these sizes, and why the cadence numbers in the table below.
 
 | Layer | Floor cadence | Examples |
 |---|---|---|
