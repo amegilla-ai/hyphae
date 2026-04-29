@@ -59,7 +59,7 @@ Create the user's vault at a path they pick, and record where it is so future se
 
 ## Rules
 
-- **Don't substitute the script.** The folder structure has to match the schema exactly (e.g. `A. inner-circle (2)` - the spaces, the period, the parens are all load-bearing). The script handles this; you should not improvise the structure.
+- **Don't substitute the script.** The folder structure has to match the schema exactly (e.g. `A. inner-circle (2)` - the spaces, the period, the parens all matter). The script handles this; you should not improvise the structure.
 - **Confirm path with user before writing.** Get explicit confirmation of the path before running the script. The default is fine but the user might want elsewhere.
 - **Never overwrite existing data.** If the path is non-empty, refuse. The user can pick a different path or move existing data manually before re-running.
 - **Don't ask for personal data.** This process is purely structural setup. Don't ask the user's name, preferences, etc. - those get captured organically as the user uses Hyphae.

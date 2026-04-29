@@ -7,24 +7,24 @@ You've installed Hyphae and opened your vault. This page walks you through how i
 Hyphae is two things working together:
 
 - **A vault.** A folder of markdown files - one per person, one per contact event, one per group, one per check-in. You're looking at it now in Obsidian.
-- **An agent.** Claude (or another coding agent) that you talk to in natural language. The agent reads and writes the vault on your behalf.
+- **An agent.** A coding agent (Claude Code, Cursor, etc.) that you talk to in natural language. The agent reads and writes the vault on your behalf.
 
-You don't fill in forms. You don't click through screens. You open Obsidian to look at what's there, and you talk to the agent when you want to do something.
+There are no forms to fill in or screens to click through. You open Obsidian to look at what's there, and you talk to the agent when you want to do something.
 
 ## The home page
 
 [[home]] is where you'll land most of the time. Sections you'll see, in order:
 
-- **Needs attention** - people whose goals aren't currently being met. Ask Claude to run a check-in.
+- **Needs attention** - people whose goals aren't currently being met. Ask the agent to run a check-in.
 - **In motion** - planned contacts coming up.
 - **Did these happen?** - planned contacts whose date has passed and that haven't been resolved.
 - **Recent activity** - last few logged contacts.
 - **Recent check-ins** - last three check-ins.
-- **What to do next** - prompts you can copy into a chat with Claude.
+- **What to do next** - prompts you can copy into a chat with the agent.
 
 ## Talking to the agent
 
-Open a chat with Claude (Claude Code, the desktop app, or wherever you've configured the runtime). Make sure the agent has access to your vault (via the working directory, MCP, or whatever the runtime uses).
+Open a chat with your coding agent (Claude Code, Cursor, or whichever you set up at install time). The agent needs to be able to read and write files in your vault folder - usually that means starting it from the cloned Hyphae repo, with the vault path recorded in `.hyphae-vault` so the agent can find it.
 
 The main prompts to know:
 
@@ -38,12 +38,12 @@ These aren't magic strings - the agent reads its process specs and figures out w
 
 A check-in is the main move you'll make with Hyphae. It walks through:
 
-1. The agent picks people who need attention (off-track goals, lapsed rhythm, things you've flagged).
+1. The agent picks people who need attention (off-track goals, lapsed contact, things you've flagged).
 2. For each, it tells you where things stand and asks what you want to do - log something, plan a contact, change the goal, leave it.
 3. You answer in plain language. The agent writes to the vault as you go.
 4. At the end, you get a summary and a list of things you've committed to do.
 
-You can stop at any time. You can do as many or as few people as you want. You can name specific people for the agent to cover. There's no "right" length.
+Stop at any time. Cover as many or as few people as you want, or name specific people for the agent to focus on. There's no "right" length.
 
 ## How to use it
 
@@ -108,7 +108,7 @@ The layer is the folder the file is in. To move someone up or down a circle, dra
 
 ## Goals
 
-Goals are optional. Most people in your vault won't have one - they're at their layer's default rhythm and that's fine. Set a goal when you have an active intent for a particular relationship.
+Goals are optional. Most people in your vault won't have one - they're at their layer's default cadence and that's fine. Set a goal when you have an active intent for a particular relationship.
 
 | Goal | For when... |
 |---|---|
@@ -116,7 +116,7 @@ Goals are optional. Most people in your vault won't have one - they're at their 
 | **Deepen** | You want to move this relationship closer than it currently is |
 | **Reconnect** | Contact has lapsed and you want to restart it |
 | **Repair** | Something specific damaged the relationship and you want to address it |
-| **Transition** | A shared context ended (a job, a team, a life stage) and you want to build an intentional rhythm without it |
+| **Transition** | A shared context ended (a job, a team, a life stage) and you want to build an intentional cadence without it |
 
 Per-person specifics (what you're trying to do, what's getting in the way) live as prose on the person's page under `## Goal`, not in a form.
 
@@ -148,11 +148,15 @@ _hyphae/
 
 The folders with parentheses on `people/` are the layers. The numbers are Dunbar's cumulative sizes - guidance, not enforcement.
 
-## Privacy
+## Privacy and security
 
-The vault is local markdown. Nothing leaves your device unless you sync it yourself.
+Your vault contains real names of the people in your life, your contact history with them, and your private notes about each relationship. This is sensitive data - treat it like a personal journal.
 
-What happens with the agent depends on which model you're running. A local model means everything stays on your machine. A cloud model means each turn sends parts of the vault to whoever runs the model.
+The vault is local markdown stored on your filesystem. Nothing leaves your device unless you sync it yourself. Hyphae itself runs no analytics, no telemetry, and no background network activity.
+
+What happens with the agent depends on which model you're running. A local model means everything stays on your machine; a cloud model means each turn sends parts of the vault to whoever runs the model.
+
+Hyphae does not encrypt the vault at rest. If you want encryption, use filesystem-level tools like FileVault, LUKS, or an encrypted volume mounted as the vault path. There's no app password and no remote wipe - access to the vault is access to your device.
 
 ## When something feels wrong
 

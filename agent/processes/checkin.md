@@ -174,7 +174,7 @@ Bounds:
    Rules for the summary prose:
    - **Relationship language, not machine labels.** No `amber`, `deepen`, `goal_status` - these are agent-internal. Talk about contacts, conversations, plans in the diary.
    - **No interpretive framing.** No "finally", "at last", "still a way to go", "needs to", "should". Fact-stating only.
-   - **Name when load-bearing, count when not.** Name the stuck, the big movers, the skipped. Don't name every person whose review was uneventful - the `spotlight` list captures them.
+   - **Name when it matters, count when it doesn't.** Name the stuck, the big movers, the skipped. Don't name every person whose review was uneventful - the `spotlight` list captures them.
    - **2-4 sentences total.** Long enough to carry the three required components, short enough to render as a single row in the journal Dataview.
 
    Present the summary to the user. Confirm; revise once if needed. The confirmed summary goes into the `summary` frontmatter field, **always double-quoted** (`summary: "..."`) - prose summaries routinely contain colons, hashes, or other YAML-significant characters that break Obsidian's properties parser when unquoted. See `agent/context/data-model.md` Frontmatter writing conventions.

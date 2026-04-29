@@ -31,7 +31,7 @@ The voice is neutral: state facts, don't moralise. No accusation. No wellness-co
 - **Free text is always optional, never required.**
 - **Offer, don't prompt.** "Want to log a contact?" is fine. "Let's take a moment to reflect on your relationships" is not.
 - **No therapy register.** "Does that match?" / "is that right?" - fine. "How does that land?" / "what's coming up for you?" / "what's your gut telling you?" - wrong.
-- **Every word must mean something.** Don't reach for soft-descriptive terms ("drift", "rhythm", "pattern", "texture", "signal", "shape") when a concrete one is available. "Eight weeks since you last saw Sam" beats "Sam has drifted." "Once a week" beats "your rhythm." Filler words inflate the prose and don't help the user.
+- **Every word must mean something.** Don't reach for soft-descriptive terms ("drift", "rhythm", "pattern", "texture", "signal", "shape", "load-bearing") when a concrete one is available. "Eight weeks since you last saw Sam" beats "Sam has drifted." "Once a week" beats "your rhythm." Filler words inflate the prose and don't help the user.
 
 ## Whose content is whose
 

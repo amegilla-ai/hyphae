@@ -1,8 +1,6 @@
 # What an agent-native app actually looks like
 
-A working argument, refined as we build Hyphae. The product is real - a relationship maintenance tool for neurodiverse adults - but the architecture is also a test case for a question we don't think anyone has answered well yet: if you reimagine the user experience around an agent, what does software become?
-
-This is the position we've worked out so far. It will be wrong in places. We'll update it as we discover that.
+A working argument, refined while building [Hyphae](https://github.com/amegilla-ai/hyphae). The product is real - a relationship maintenance tool for neurodiverse adults - but the architecture is also a test case for a question we don't think anyone has answered well yet: if you reimagine the user experience around an agent, what does software become?
 
 ---
 
@@ -17,9 +15,9 @@ Each layer of the stack solves a problem that experience model creates:
 - **Routing** gives the user destinations to navigate between.
 - **The build step** compiles and ships the UI.
 - **The database** stores data the user can't read directly, with an interface to translate.
-- **Validation middleware** sits at the boundary where unstructured user input meets structured backend storage.
+- **Validation middleware** sits between user input and backend storage to make sure what the user typed is well-formed before it gets saved.
 
-When the experience is reimagined - the user talks to an agent in natural language, the agent interprets and acts, state lives as human-readable files in tools the user already has open - those layers stop being load-bearing. They were shaped by the experience. Change the experience and the architecture changes with it.
+When the experience is reimagined - the user talks to an agent in natural language, the agent interprets and acts, state lives as human-readable files in tools the user already has open - those layers stop being necessary. They existed to support the experience. Change the experience and the architecture changes with it.
 
 The agent is the enabling technology. The reduction in conventional infrastructure is a consequence of the experience change, not of adding AI to an app.
 
@@ -27,63 +25,66 @@ The agent is the enabling technology. The reduction in conventional infrastructu
 
 ## What goes away
 
-**The backend server.** No client makes requests to a service. The agent talks to a model and reads/writes files. There's no request-response boundary across a network.
+**The backend server.** No client makes requests to a service - the agent talks to a model and reads or writes files directly, with no request-response boundary across a network.
 
-**The database.** Markdown files in a folder are sufficient state for apps about words, plans, relationships, decisions - data meant to be read by humans. The agent reads and writes them; humans read and edit them; the filesystem provides versioning, backup, sync, and search. A database optimises for things (queries, joins, transactions, schema enforcement at scale) that aren't load-bearing here.
+**The database.** Markdown files in a folder are sufficient state for apps about words, plans, relationships, decisions - data meant to be read by humans. The agent reads and writes them; humans read and edit them; the filesystem provides versioning, backup, sync, and search. A database optimises for things (queries, joins, transactions, schema enforcement at scale) that aren't necessary for this use case.
 
-**The API layer.** No REST endpoints. The agent has **tools** - small, named operations on state with stable contracts. Conceptually similar to API endpoints, but they're not HTTP, not versioned for external consumers, and don't deal with auth, pagination, or rate limiting. They're operations on files.
+**The API layer.** No REST endpoints. The agent reads and writes files using whatever file operations its host provides (Claude Code, Cursor, etc.). What would have been API endpoints in a conventional app are Hyphae's named **processes** - markdown playbooks the agent follows when the user asks for something. The processes describe what to read, what to write, and what to confirm; the file operations themselves are the host agent's standard tools.
 
 **Forms.** Input doesn't need to be structured at the boundary. The user says "Sam and I had coffee yesterday and it was lovely" and the agent decides what file to write, which fields to fill, which person to link to. Structuring happens inside the agent.
 
-**Routing.** No screens, no URLs, no router. There's nowhere to navigate. The "routes" that survive are the agent's named processes - playbooks for recurring requests like add-person, log-contact, daily-checkin. Shaped for conversation, not for navigation.
+**Routing.** There's nowhere to navigate so the "routes" that survive are the agent's named processes - playbooks for recurring requests like add-person, log-contact, check-in. Designed for conversation rather than navigation.
 
-**The rendering layer.** We don't ship a UI. We don't design pixels. The chat is rendered by whatever client the user is using (Claude.ai, terminal, an Obsidian plugin). The vault is rendered by Obsidian. We design the substance - what the agent says, how data is shaped, which views to expose - not the surface.
+**The rendering layer.** The app ships no UI and chat is rendered by whatever client the user runs (Claude.ai, terminal, an Obsidian plugin). The vault is rendered by Obsidian. What the project designs is the substance - what the agent says, how data is structured, which views to expose - not the visual layer.
 
-**Most of the auth surface.** Single-user, local-first apps don't need accounts. The vault is a folder. The agent runs against it. Permission is filesystem permission.
+**Most of the auth layer.** Single-user, local-first apps don't need accounts so permission is filesystem permission.
 
-**The build step.** No JavaScript to bundle, no CSS to compile, no SPA to ship. There's an LLM, some markdown files, and a few scripts.
+**The build step.** Hyphae is an LLM, a folder of markdown files, and a few scripts - nothing to compile, nothing to bundle.
 
 **Validation middleware.** With no forms, there's no boundary where unstructured user input meets structured storage. The validation that remains is different in kind: making sure the *vault* is well-formed, not making sure the *user input* is well-formed.
 
 ---
 
-## What remains, reshaped
+## What remains
 
-**Schema.** The data model is load-bearing. The agent has to know what file types exist, what frontmatter keys mean, what values are valid. It lives as a terse markdown spec the agent reads (in our case, `agent/context/data-model.md`), not as ORM models or migration files. Frontmatter keys are the schema.
+**Schema.** The data model defines what the agent works against - what file types exist, what each frontmatter key means, and what values are valid. It's a terse markdown spec the agent reads (`agent/context/data-model.md`), not ORM models or migration files.
 
-**Logic.** Some logic stays deterministic - "days since I last contacted Sam" is exact arithmetic and shouldn't be left to the LLM. It's a small surface, exposed as tools. Judgment-shaped logic - "should I suggest reaching out to Sam this week, and if so how" - moves to the LLM, governed by processes and rules.
+**Logic.** All of it lives in the LLM, governed by processes and rules. Judgment work - "should I suggest reaching out to Sam this week, and if so how" - is what the LLM is for. Exact computation - "how many days since I last saw Sam" - is also done by the LLM, by reading the contact files, with the user confirming any write that depends on the result. The discipline that holds the system together is the process spec, the schema, and the confirm-before-write rule.
 
-**State.** Persisted as files the user can read and edit directly. The vault is the storage, the schema, and the substrate the user operates on.
+**State.** Persisted as files the user can read and edit directly. The vault is where state is stored, where the schema lives (in frontmatter), and where the user works - one set of files doing all three.
 
-**Interaction surfaces.** Two surfaces, neither of which we render:
+**The user interface.** Two places, neither of which the project renders:
+
 - **Chat** - the user talks to the agent in their chosen client.
 - **The vault** - the user reads and edits state in Obsidian.
 
-A third surface, **reports**, is a vault convention - generated artifacts written to `vault/reports/` when longitudinal value warrants persistence; ephemeral chat output otherwise.
+A third, **reports**, is a vault convention - the agent generates them on request and writes the keepers to `vault/_hyphae/reports/`. One-offs stay in chat.
 
-**Configuration.** The agent's behaviour is configured by markdown files: a system prompt for identity and rules, a folder of named processes, a folder of tool contracts, a context budget for what gets loaded every turn. This is the application, in a real sense - it's just text.
+**Configuration.** The agent's behaviour is configured by markdown files: a system prompt for identity and rules, a folder of named processes, a folder of context (schema, field specs, tool contracts), a context budget for what gets loaded every turn. This is the application, in a real sense - it's just text.
 
-**Validation.** Required, but it's the vault and the agent config that need validating, not user input. Schema drift between data-model.md and the templates is the new bug class. Wikilinks that don't resolve. Frontmatter values outside the enum. CI exists, but it tests the agent's world.
+**Validation.** Required, but it's the vault and the agent config that need validating, not user input. The new bug classes are mismatches between the data-model and the templates, wikilinks that don't resolve, and frontmatter values outside the enum. Automated checks run on push to catch these - but they verify the data and config, not application code, because there isn't any.
 
-**Accessibility.** Reframed. We can't enforce contrast ratios because we don't render colours. We can't enforce tap target sizes because we don't render buttons. What we can do is write copy that doesn't depend on visual structure to be understood, structure markdown so screen readers parse it sensibly, and never use colour as the sole carrier of meaning. Accessibility moves from "implement contrast ratios" to "design content that works regardless of what renders it."
+**Accessibility.** The project doesn't render anything itself, so it can't set contrast ratios, font sizes, or tap target sizes - those are decisions for whichever client renders the chat and however Obsidian renders the vault. What the project can do is write copy that reads sensibly without visual layout, use clear markdown structure so screen readers parse the headings and lists correctly, and never rely on colour alone to convey meaning.
 
 ---
 
-## What's hard
+## New considerations
 
-**The model is not free.** The agent runs on an LLM with a cost in tokens, latency, privacy if hosted, and hardware if local. The privacy story changes completely depending on where the model lives. We've adopted three tiers (local accessible, local high-capability, cloud) and a design rule: author the runtime config for the floor model and let higher-capability models benefit, not depend.
+**The model is not free.** The agent runs on an LLM with a cost in tokens, latency, privacy if hosted, and hardware if local. The privacy story changes completely depending on where the model lives. Hyphae's instructions are written terse and structured to give a small local model the best chance of running them well, but whether that succeeds is one of the open questions further down.
 
-**Determinism boundary discipline.** It's tempting to let the LLM do everything because it can. It shouldn't. Cheap exact computations should be tools, not prompts - both for reliability and cost. The line between "tool job" and "judgment job" needs to be drawn and maintained.
+**Trusting the LLM for exact work.** Conventional architectures push exact computation - dates, counts, validation - into deterministic code, because LLMs hallucinate. Hyphae uses schema discipline and user confirmation instead. The risk: every time the LLM does a calculation - days since contact, count of recent meetings, whether someone's overdue - it might be subtly wrong. The mitigations are to confirm before any write, treat the schema as the source of truth, and have processes ask the user to check any number that's about to influence a decision. Whether this scales is an open question.
 
-**Context budget.** Every always-on file in the agent's context is paid for on every turn. The bar to add to `context/` has to be high. The discipline is not adding files - keeping schema, tools, and user profile lean and pushing everything else to on-demand load.
+**Context budget.** Every file the agent loads at session start is paid for on every turn that follows. In Hyphae today, that's `AGENTS.md` (~1,400 tokens) plus the user's profile once populated (~500-1,500 tokens) - around 2-3K tokens always-on. The schema and field specs (~9K tokens together) load only when a process needs them. There's no formal load-policy mechanism; what's always-on versus on-demand is set by what `AGENTS.md` contains directly versus what it points at. The discipline is to keep `AGENTS.md` itself tight and use the pointer list to lazy-load everything else.
 
-**Schema migrations.** Files in the user's vault have shape. If the schema changes in a non-additive way, existing files need migrating. We use explicit migrations (`dev/migrations/NNN-YYYY-MM-DD-<slug>.{md,py}`) that are idempotent and required only for breaking changes.
+**Schema migrations.** Files in the user's vault have a structure. If the schema changes in a non-additive way, existing files need migrating. Migrations are explicit, idempotent, and required only for breaking changes - additive changes (new optional fields, new processes) take effect on the next config update without needing one.
 
-**Sync between dev and runtime.** The repo holds the canonical agent config; the vault holds the deployed copy plus the user's data. They have to stay aligned without leaking personal data into the repo or wiping vault-owned files. We use an allowlist sync script that copies repo-owned paths and refuses to touch vault-owned ones.
+**Repo-owned versus user-owned paths.** The cloned repo holds the canonical agent config; the user's vault holds their data and the agent's runtime memory. The two must not collide - the agent must not write to repo-owned paths, because they get overwritten on the next config update; and the config update must not touch user-owned paths, because they're the user's. Holding that boundary explicit is part of the architecture.
 
-**Testing.** Conventional CI doesn't apply to a project with no compiled code. The validators we run instead - schema check, vault lint, link check - test the artifacts the agent operates on, not the agent itself. Testing the agent's behaviour is closer to LLM eval: scenarios, expected behaviours, manual inspection. We haven't built this yet.
+**Testing.** Conventional automated tests don't apply to a project with no compiled code. What runs instead are validators - schema check, vault lint, link check - which test the data and config the agent operates on, not the agent itself. Testing the agent's behaviour is a separate problem: scenarios run against the live agent, with expected outcomes and manual inspection. Hyphae hasn't built this yet.
 
-**The agent itself can drift.** A model update or a config change can shift behaviour without any code change. Versioning the runtime config (it's all in git) gives some defence; eval scenarios will give more. This is a new failure mode without a clean solution yet.
+**Behaviour can change without code changing.** A model update or a config change can shift behaviour without any code change. Versioning the runtime config (it's all in git) gives some defence; eval scenarios will give more. This is a new failure mode without a clean solution yet.
+
+**The user needs an agent that can edit files, plus a working git install.** Hyphae is operated by a coding agent (Claude Code, Cursor, etc.) that the user runs on their machine. Mobile chat clients and most consumer chat interfaces can't write files, so they can't run the writing parts of Hyphae. Install is `git clone`; updates are `git pull`. The user doesn't need to know git beyond those two commands, but they do need git on their machine and the comfort to run them. This narrows the audience to people who already work in this kind of environment or are willing to set one up. An agent-native app aimed at a broader audience needs either a different host (a packaged Obsidian plugin, a desktop app that bundles everything) or it needs to wait for mainstream chat clients to gain file-tool access and a non-git distribution channel.
 
 ---
 
@@ -91,7 +92,7 @@ A third surface, **reports**, is a vault convention - generated artifacts writte
 
 This pattern works for apps where the conventional UX was a forced fit - where the user's actual activity is conversational and reflective, but the available paradigm forced it into forms and screens. Personal knowledge work, journaling, planning, relationship tracking, decision logs, financial reflection, creative drafting - cases where the user is talking with the system about their own state.
 
-In those cases, reimagining the experience removes the legacy constraints. The architecture becomes smaller because the things it used to need (forms, screens, databases, build pipelines) were experience-shaped scaffolding for a UX paradigm we no longer have to use.
+In those cases, reimagining the experience removes the legacy constraints. The architecture becomes smaller because the things it used to need (forms, screens, databases, build pipelines) existed to support a UX paradigm no longer in use.
 
 ---
 
@@ -108,7 +109,7 @@ The pattern doesn't work for apps where conventional infrastructure exists for r
 
 In these cases the legacy constraints are problem-driven, not experience-driven. The agent might still be valuable - as an orchestration layer over conventional infrastructure rather than a replacement for it - but the database stays, the API stays, the build pipeline stays, the rendering stays.
 
-The architectural inversion (agent as primary input, judgment-shaped logic in the model) still applies. The reduction of scaffolding does not.
+The architectural inversion (agent as primary input, judgment logic in the model) still applies. The reduction of scaffolding does not.
 
 Hyphae sits in the first category.
 
@@ -116,42 +117,33 @@ Hyphae sits in the first category.
 
 ## What changes about the dev process
 
-**The unit of work.** Not a function or a component. A process (a markdown playbook the agent follows), a tool (a small executable the agent calls), or a schema rule. A feature is usually a process plus the schema fields and tools it needs.
+**The unit of work.** Instead of writing a function or a component, you write a process - a markdown playbook the agent follows when the user asks for something - or a schema rule. A typical feature is one process plus whatever schema fields it needs to read or write.
 
-**The medium.** Most of what you write is markdown, not code. Tools tend to be small Python or shell scripts. The largest artifacts in the repo are architectural docs, the decisions register, and the agent config. Code is the minority.
+**The medium.** Almost everything in the repo is markdown rather than code. The largest artifacts are architectural docs and the agent's runtime config (system prompt, processes, schema). Code is the minority and shows up only as small shell scripts for setup and dev plumbing - there is no application logic to write.
 
-**The review surface.** A code review of a process is a review of prose. Does it tell the agent to do the right thing in the right order? Does it match the schema? Will it handle the obvious edge cases? The skills overlap with technical writing as much as with coding.
+**What gets reviewed.** Reviewing a process is reviewing prose. The questions are whether it tells the agent to do the right thing in the right order, whether the steps match the current schema, and whether it handles the obvious edge cases. The skills involved overlap with technical writing as much as with software engineering.
 
-**The test loop.** You sync the change to the vault, talk to the agent, see what happens. There's no compile-test-deploy cycle. The cycle is: edit, validate, sync, test in conversation. Faster than conventional dev when it works, harder to debug when it doesn't, because the gap between "the markdown says X" and "the agent did Y" is a black box.
+**The test loop.** Conventional dev loops compile code, run tests, then deploy. Hyphae's loop is shorter: edit a process or schema file, run the validators, sync the change to the vault, then talk to the agent and watch what it does. The loop is faster than conventional dev when it works, but harder to debug when it doesn't, because the gap between "the markdown says X" and "the agent did Y" is opaque.
 
-**Documentation isn't separate from code.** The agent's runtime config is documentation - it just happens to also be the program. The line between "describing what the system does" and "telling the system what to do" collapses. This is unfamiliar but not bad; it forces a clarity conventional code often hides.
+**Documentation isn't separate from code.** The agent's runtime config is documentation that also happens to be the program - the same files describe what the system does and tell the system what to do. There is no second set of docs that can fall out of sync with the implementation, because the implementation is the docs.
 
 ---
 
 ## What we don't know yet
 
-**Whether the floor model is enough.** GPT-OSS-20B is the realistic local floor for most users. We've designed the runtime config to be terse and structured so a 20B-class model has the best shot at running it well. We have not exercised it against that model. Until we do, "local works" is a hope.
+**Whether a private local setup is viable for typical hardware.** Cloud models work today but every conversation sends vault excerpts to the provider. The privacy story only stays clean if the user runs a model locally. That works on workstation-class hardware (60GB+ for a 70B-class model), but the realistic consumer setup is a smaller open-weights model on around 16GB of GPU memory. Whether a model that size can do Hyphae's judgment work - the check-in priority logic, person summaries, the conversational push-back - is untested. Until it has been, "private local Hyphae" is a hope.
 
-**Whether eval is tractable.** Testing an agent's behaviour against scenarios is conceptually clear, operationally vague. We don't have a harness, a scoring approach, or a regression rule. We expect to figure this out in production.
+**Whether you can test the agent reliably.** With conventional code, you write tests that say "given input X, the function should return Y" and run them after every change. With an agent, the output isn't a return value - it's a conversation, and it can vary turn to turn even on the same input. So how do you know if a change you made to a process improved things, broke them, or made no difference? Today the answer is "talk to the agent and see what it does, manually". That doesn't scale to many processes or to confident changes. There are emerging patterns in the LLM space (scenarios with expected outcomes, scoring rubrics, comparison runs against earlier versions), but no agreed standard. Hyphae hasn't built any of this yet.
 
-**Whether non-technical users can run this.** The architecture is simple; the setup (model, Ollama or API key, Obsidian, vault) is several steps and several technical decisions. An agent-native app may need a packaged distribution to reach a non-technical audience. We're not solving that yet.
-
-**Whether processes scale past a handful.** Today we have a handful of processes in mind. If a real product needs fifty, the cognitive load on the agent and the maintenance load on us both rise. We don't know where the breakpoint is.
-
-**How the hybrid pattern actually looks.** We've sketched the bounded thesis (agent-native works for some apps, agent-as-orchestration for others). We haven't built an example of the hybrid. The interface between an agent-native experience and conventional infrastructure is architectural territory we're not exploring here.
+**Whether processes scale past around a dozen.** Hyphae has eleven processes today and the pattern is holding - per-process files, one concern each, named subroutines for shared mechanics. If a real product needs fifty, the cognitive load on the agent (which has to know which process to invoke from a given user turn) and the maintenance load on the project both rise. Hyphae hasn't hit the breakpoint yet.
 
 ---
 
 ## How to read this repo as a worked example
 
-- `docs/architecture.md` - the spatial picture (three surfaces, ownership table, design principle 1)
-- `docs/decisions.md` - decisions register, with rationale per choice
-- `agent/` - the agent's runtime config (system prompt, processes, context, tools)
-- `vault/` - the data the agent operates on, with templates and dummy data
-- `dev/` - dev infrastructure (scripts, migrations, eventually evals)
+- `docs/architecture.md` - where things live, ownership between repo and vault, the four architectural principles
+- `docs/requirements.md` - what Hyphae does, expressed as outcomes, processes, vault states, and invariants
+- `agent/` - the agent's runtime config (system prompt, processes, context including schema and field specs)
+- `vault/` - the seed files used by `hyphae-init.sh` to set up a new user vault
 
-This thesis is the summary. The decisions register is the receipts.
-
----
-
-*Last updated 2026-04-13.*
+This thesis is the summary; the repo is the working out.

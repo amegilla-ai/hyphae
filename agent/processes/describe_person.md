@@ -37,7 +37,7 @@ The job is to *describe what's there*, not to interpret, advise, or nudge. Sugge
 
 4. **Compose the description.** Use the source material; do not invent. Structure depends on depth:
 
-   - **Tight (1-2 sentences)**: layer + the single most-load-bearing fact. "Sam's in your friend circle, your closest mate from the Sydney years."
+   - **Tight (1-2 sentences)**: layer + the single most defining fact. "Sam's in your friend circle, your closest mate from the Sydney years."
 
    - **Brief (3-5 sentences, default)**: layer + goal in plain words (if set) + last contact (when, mode, quality if logged) + next planned (date, action if set) + any standout stable context from `## Notes`. One paragraph.
 

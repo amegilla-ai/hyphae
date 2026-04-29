@@ -18,7 +18,7 @@ You'll need:
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/<owner>/hyphae.git
+git clone https://github.com/amegilla-ai/hyphae.git
 cd hyphae
 
 # 2. Start your coding agent here. It auto-loads AGENTS.md and walks you
@@ -37,29 +37,29 @@ For updates, `git pull` in the cloned repo. The agent runtime updates automatica
 
 Once installed, see [`docs/user-guide.md`](docs/user-guide.md) for the home page, prompts you can use with the agent, what a check-in does, layers, goals, and where things live.
 
-Product requirements: [`docs/requirements.md`](docs/requirements.md)
-
 ---
 
 ## Running the agent
 
 Hyphae needs an LLM. Three honest tiers:
 
-- **Local, accessible (~16GB GPU)** - open-weights models like GPT-OSS-20B via Ollama, LM Studio, or llama.cpp. Nothing leaves your device. Whether this is *enough* model for Hyphae's judgment-shaped work is something we'll find out during development.
+- **Local, accessible (~16GB GPU)** - open-weights models like GPT-OSS-20B via Ollama, LM Studio, or llama.cpp. Nothing leaves your device. Whether this size of model is *enough* for the kind of judgment Hyphae asks of it is something we'll find out during development.
 - **Local, high capability (~64GB+ unified memory or workstation GPU)** - 70B-class open-weights models. Better judgment, same privacy story.
 - **Cloud (hosted)** - Claude, GPT-5, etc. via API. Best capability; vault excerpts are sent to the provider every turn.
 
-Hyphae is model-agnostic. The runtime config in [`agent/`](agent/) is authored to work against the floor model first. Local-first is the design intent; cloud is supported. Tier details: [`docs/deployment-tiers.md`](docs/deployment-tiers.md).
+Hyphae is model-agnostic. The runtime config in [`agent/`](agent/) is written terse and structured to give a small local model the best chance of running it well. Local-first is the design intent; cloud is supported.
 
 ---
 
-## Privacy
+## Privacy and security
 
-The vault is local markdown. It stays on your device unless you sync it yourself.
+A Hyphae vault contains real names of the people in your life, your contact history with them, and your private notes about each relationship. This is sensitive data - treat it like a personal journal.
+
+The vault is local markdown. It stays on your device unless you sync it yourself. Hyphae has no accounts, no analytics, and no telemetry of its own.
 
 The privacy story for the agent depends on where you run the model - see [Running the agent](#running-the-agent). With a local model, nothing leaves your machine. With a cloud model, every conversation sends vault excerpts to the provider; check their terms.
 
-No accounts. No analytics. No telemetry from Hyphae itself.
+**On security at rest:** Hyphae stores the vault as plain markdown on your filesystem and does not encrypt it. If you want encryption at rest, use filesystem-level encryption (FileVault, LUKS, or an encrypted volume mounted as the vault path). There's no app password and no remote wipe. See [`docs/requirements.md`](docs/requirements.md) for the full security posture.
 
 ---
 
@@ -67,8 +67,9 @@ No accounts. No analytics. No telemetry from Hyphae itself.
 
 - [`docs/about.md`](docs/about.md) - why this project exists, who it's for, the agent-native pitch
 - [`docs/user-guide.md`](docs/user-guide.md) - how to use Hyphae once installed
+- [`docs/requirements.md`](docs/requirements.md) - what Hyphae does, expressed as outcomes, processes, vault states, and invariants
+- [`docs/architecture.md`](docs/architecture.md) - where things live, the repo/vault ownership boundary, the architectural principles
 - [`docs/agent-native-thesis.md`](docs/agent-native-thesis.md) - the agent-native argument in full, for readers interested in the second purpose of this repo
-- [`dev/README.md`](dev/README.md) - for developers: project layout, dev model, sync, migrations
 
 ---
 
