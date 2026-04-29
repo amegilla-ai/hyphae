@@ -1,0 +1,101 @@
+/* Hyphae snippet - layout fixes + layer palette */
+
+/* ---------- Palette (available for future use) ---------- */
+:root {
+  --hyphae-accent: #5B8DB8;          /* cornflower blue */
+  --hyphae-accent-hover: #4A7BA6;
+  --hyphae-accent-subtle: #EBF2F8;
+
+  --hyphae-layer-1: #5B8DB8;         /* inner    - cornflower blue */
+  --hyphae-layer-2: #4A9B8E;         /* close    - teal */
+  --hyphae-layer-3: #6B9B5E;         /* friend   - sage */
+  --hyphae-layer-4: #A0874A;         /* familiar - warm amber */
+  --hyphae-layer-5: #8B6BAE;         /* casual   - muted violet */
+
+  --hyphae-success: #4A7C59;
+  --hyphae-warning: #A0742A;
+  --hyphae-error:   #C0392B;
+}
+
+/* ---------- Tint circle folders in the file explorer ---------- */
+.nav-folder-title[data-path^="people/A. inner-circle"]    .nav-folder-title-content { color: var(--hyphae-layer-1); }
+.nav-folder-title[data-path^="people/B. close-circle"]    .nav-folder-title-content { color: var(--hyphae-layer-2); }
+.nav-folder-title[data-path^="people/C. friend-circle"]   .nav-folder-title-content { color: var(--hyphae-layer-3); }
+.nav-folder-title[data-path^="people/D. familiar-circle"] .nav-folder-title-content { color: var(--hyphae-layer-4); }
+.nav-folder-title[data-path^="people/E. casual-circle"]   .nav-folder-title-content { color: var(--hyphae-layer-5); }
+
+/* ---------- Hide the properties panel on opt-in pages ---------- */
+/* Applies only to files with `cssclasses: [hyphae-collapse-props]` in
+   frontmatter. User still edits properties via Obsidian's File Properties
+   sidebar panel (Ctrl+P -> "Show file properties"), or the agent writes
+   them. Group/contact/checkin files don't opt in - their frontmatter is
+   the content. */
+.hyphae-collapse-props .metadata-container {
+  display: none !important;
+}
+
+/* ---------- Widen the properties/frontmatter panel ---------- */
+.metadata-container,
+.metadata-properties {
+  --metadata-label-width: 200px;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+.metadata-property {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+.metadata-property-key {
+  min-width: 150px !important;
+  max-width: 200px !important;
+}
+
+.metadata-property-value,
+.metadata-property-value input[type="text"],
+.metadata-property-value textarea,
+.metadata-property-value .multi-select-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  flex-grow: 1 !important;
+}
+
+/* Don't stretch checkboxes */
+.metadata-property-value input[type="checkbox"] {
+  width: 18px !important;
+  max-width: 18px !important;
+  min-width: 18px !important;
+  height: 18px !important;
+  flex-grow: 0 !important;
+}
+
+.markdown-source-view.mod-cm6 .cm-sizer,
+.markdown-preview-sizer {
+  max-width: 100% !important;
+}
+
+/* ---------- Dashboard pages: full-width tables, no column wrapping ---------- */
+/* Files with `cssclasses: [hyphae-dashboard]` opt into this. */
+.markdown-source-view.mod-cm6.hyphae-dashboard .cm-sizer,
+.markdown-source-view.mod-cm6.hyphae-dashboard .cm-line,
+.markdown-source-view.mod-cm6.hyphae-dashboard .cm-content,
+.markdown-preview-view.hyphae-dashboard .markdown-preview-sizer {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+.hyphae-dashboard .dataview.table-view-table,
+.hyphae-dashboard table {
+  width: 100% !important;
+  table-layout: auto !important;
+}
+
+.hyphae-dashboard .dataview.table-view-table th,
+.hyphae-dashboard .dataview.table-view-table td,
+.hyphae-dashboard table th,
+.hyphae-dashboard table td {
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
