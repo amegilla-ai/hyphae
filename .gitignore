@@ -45,7 +45,9 @@ __pycache__/
 .venv/
 .env
 
-.claude/settings.local.json
+# Local-only Claude Code config (settings, per-machine notes that may
+# reference local paths). Stays per-machine; not tracked.
+.claude/
 
 # Vault path pointer - written by init_vault on first run, points at the
 # user's data folder. Local to each clone.
